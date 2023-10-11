@@ -29,6 +29,7 @@ Route::get('/', [MemoController::class, 'index'])->name('public.home');
 Route::post('/memos', [MemoController::class, 'store'])->name('memos.store');
 Route::put('/memos/{id}', [MemoController::class, 'update'])->name('memos.update');
 
+
 Auth::routes();
 
 Route::get('/home', [AdminController::class, 'index'])->name('home');

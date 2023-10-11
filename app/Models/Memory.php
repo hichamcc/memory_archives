@@ -16,5 +16,6 @@ class Memory extends Model
         'city',
         'email',
         'status',
+        'number',
     ];
 }

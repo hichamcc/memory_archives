@@ -32,9 +32,7 @@
                             <div class="memo-card-header">
                                 <div class="card-title">
                                     MEMORY
-                                    <a class="memo-icon" href="#">
-                                        <img src="{{ asset('../icons/noun-share.svg') }}"  alt="Share">
-                                    </a>
+
                                 </div>
                             </div>
                             <div class="memo-card-body">
@@ -69,9 +67,7 @@
                             <div class="memo-card-header">
                                 <div class="card-title">
                                     MEMORY
-                                    <a class="memo-icon" href="#">
-                                        <img src="{{ asset('../icons/noun-share.svg') }}"  alt="Share">
-                                    </a>
+
                                 </div>
                             </div>
                             <div class="memo-card-body">
@@ -103,9 +99,7 @@
                             <div class="memo-card-header">
                                 <div class="card-title">
                                     MEMORY
-                                    <a class="memo-icon" href="#">
-                                        <img src="{{ asset('../icons/noun-share.svg') }}"  alt="Share">
-                                    </a>
+
                                 </div>
                             </div>
                             <div class="memo-card-body">

@@ -16,16 +16,14 @@
         <input type="text" class="search-input" id="searchInput" placeholder="Search...">
         <img src="{{ asset('../icons/noun-search.svg') }}" class="search-icon" alt="Search Icon">
     </div>
-    @php
-        $memoCount = count($memos);
-    @endphp
+
 
     @foreach ($memos as $index => $memo)
         <div class="col-lg-4 col-md-6  col-sm-12 mb-2">
-            <div class="memo-card" data-id="{{ $memo->id }}" data-num="{{ $memoCount - $index }}">
+            <div class="memo-card" data-id="{{ $memo->id }}" data-num="{{$memo->number }}">
                 <div class="memo-card-header">
                     <div class="card-title">
-                        MEMORY #{{ $memoCount - $index }}
+                        MEMORY #{{ $memo->number }}
                     </div>
                 </div>
                 <div class="memo-card-body">

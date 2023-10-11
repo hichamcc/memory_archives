@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Memory;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\DB;
 
 class MemoController extends Controller
 {
@@ -11,7 +13,7 @@ class MemoController extends Controller
     {
         // Retrieve approuved memos
         $memos = Memory::where('status', 'active')
-            ->orderBy('id', 'desc')
+            ->orderBy('number', 'desc')
             ->get();
 
         return view('/welcome', compact('memos'));
@@ -71,9 +73,22 @@ class MemoController extends Controller
         $request->validate([
             'status' => 'required|in:active,refused',
         ]);
+        if ($request->status === 'active') {
+            // Get the last big number from the "memory" table
+            $lastBigNumber = DB::table('memories')->max('number');
 
-        // Update the memo's status
-        $memo->update(['status' => $request->status]);
+            // Increment the last big number by 1
+            $newNumber = $lastBigNumber + 1;
+
+            // Update the memo's status and set the new number
+            $memo->update([
+                'status' => $request->status,
+                'number' => $newNumber,
+            ]);
+        } else {
+            // Update the memo's status without changing the number
+            $memo->update(['status' => $request->status]);
+        }
 
         if ($request->status == 'active' ){
 
@@ -132,6 +147,7 @@ class MemoController extends Controller
 
         return view('/memo_overview' , compact('memo','memos','memoNum'));
     }
+
 }
 
 

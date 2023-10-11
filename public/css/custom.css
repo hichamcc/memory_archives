@@ -256,7 +256,7 @@ a{
     padding: unset;
 }
 .card-overview .card-title , .card-form .card-title {
-    font-size: 14px;
+    font-size: 18px;
     padding: 18px;
 }
 .card-form .memo-card-input{
@@ -296,6 +296,16 @@ a{
     font-family: 'BP', monospace;
 
 }
+
+.card-pdf {
+    margin: unset;
+    border: unset;
+    min-height: 1000px;
+
+}
+#memo-content{
+    padding: unset;
+}
      /* Container for search input and icon */
 .search-container {
     position: relative; /* Position the icon relative to this container */
@@ -332,7 +342,31 @@ a{
 }
 
 @media (min-width: 768px) {
+}
 
+@media (max-width: 767px) {
+    .container {
+        max-width: 100%;
+        margin-top: 10px;
+    }
+    .card-overview .card-text p {
+        font-size: 20px;
+    }
+    .card-overview .card-title, .card-form .card-title {
+        font-size: 12px;
+        padding: 12px;
+    }
+    .card-overview .card-text {
+        padding: 0px 10px;
+        max-height: 50vh;
+    }
+
+    .navbar-brand {
+        font-size: 18px;
+    }
+    .info-page {
+        font-size: 14px;
+    }
 }
 
 .nav-item {
