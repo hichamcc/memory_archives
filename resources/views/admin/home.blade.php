@@ -67,7 +67,6 @@
                             <div class="memo-card-header">
                                 <div class="card-title">
                                     MEMORY
-
                                 </div>
                             </div>
                             <div class="memo-card-body">
@@ -84,7 +83,9 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="memo-btn text-center">
+                            <button class="black-btn btn-sm delete"  data-memo-id="{{ $memo->id }}"> Delete</button>
+                        </div>
                     </div>
                 @endforeach
 
@@ -116,7 +117,9 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="memo-btn text-center">
+                            <button class="black-btn btn-sm delete"  data-memo-id="{{ $memo->id }}"> Delete</button>
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -129,9 +132,26 @@
 
 @section('script')
     <script>
+
+        function dinRatio() {
+            var cardWidth = $('.memo-card').width();
+            var cardheight = $('.memo-card').width()/1.41;
+
+            if(cardWidth){
+                $('.memo-card').css('height',cardheight);
+            }
+        }
+
         $(document).ready(function () {
+            dinRatio();
+            $(window).on('resize', function () {
+                dinRatio();
+
+            });
+
             // Event handler for the "activeTab" click
             $("#activeTab").click(function () {
+
                 // Show the active memos section
                 $("#memosActive , #activeTab").addClass("show active");
                 $(" #activeTab").addClass(" active");
@@ -139,10 +159,19 @@
                 // Hide other memos sections
                 $("#memosRefused, #memosPending ").removeClass("show active");
                 $(" #refusedTab , #pendingTab ").removeClass("active");
+
+                var cardWidth = $(' #activeTab').first('.memo-card').width();
+                var cardheight = $(' #activeTab').first('.memo-card').width()/1.41;
+
+                if(cardWidth){
+                    $('.memo-card').css('height',cardheight);
+                }
+
             });
 
             // Event handler for the "refusedTab" click
             $("#refusedTab").click(function () {
+
                 // Show the refused memos section
                 $("#memosRefused").addClass("show active");
                 $(" #refusedTab").addClass(" active");
@@ -150,6 +179,14 @@
                 // Hide other memos sections
                 $("#memosActive, #memosPending").removeClass("show active");
                 $(" #activeTab  , #pendingTab ").removeClass("active");
+
+
+                var cardWidth = $(' #refusedTab').first('.memo-card').width();
+                var cardheight = $(' #refusedTab').first('.memo-card').width()/1.41;
+
+                if(cardWidth){
+                    $('.memo-card').css('height',cardheight);
+                }
 
             });
 
@@ -163,7 +200,13 @@
                 $("#memosActive, #memosRefused").removeClass("show active");
                 $(" #activeTab , #refusedTab  ").removeClass("active");
 
-            });
+
+                var cardWidth = $('#memosPending').first('.memo-card').width();
+                var cardheight = $('#memosPending').first('.memo-card').width()/1.41;
+
+                if(cardWidth){
+                    $('.memo-card').css('height',cardheight);
+                }            });
 
 
             // Event handler for the "APPROVE" button click
@@ -193,6 +236,36 @@
                     }
                 });
             });
+
+
+
+
+            // Event handler for the "DELETE" button click
+            $(document).on('click','.delete',function () {
+                var memoId = $(this).data("memo-id");
+
+                // Show the loading spinner
+                $("#loadingOverlay").css('display','flex');
+
+                // Send a POST request to update the memo's status
+                $.ajax({
+                    url: "{{ route('memos.delete', '') }}" + "/" + memoId,
+                    type: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        _method: "PUT", // Use "_method" to simulate a PUT request
+                    },
+                    success: function (response) {
+                        // Handle success, e.g., display a success message
+                        location.reload();
+                    },
+                    error: function (xhr) {
+                        // Handle errors, e.g., display an error message
+                        alert("Error: " + xhr.statusText);
+                    }
+                });
+            });
+
 
             // Event handler for the "REJECT" button click
             $(".red-btn").click(function () {

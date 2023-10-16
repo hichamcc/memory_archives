@@ -6,27 +6,26 @@
         <form method="POST" action="{{ route('memos.store') }}">
             @csrf
 
-            <div class="col-lg-8 col-md-12 offset-lg-2 col-sm-12 mb-4">
+            <div class="col-lg-12 col-md-12 card-overview col-sm-12 mb-4">
                 <div class="memo-card card-form">
                     <div class="memo-card-header">
                         <div class="card-title">
-                            MEMORY
+                            <div id="char-count">300 CHARACTERS REMAINING</div>
                         </div>
                     </div>
-                    <div id="char-count">300 CHARACTERS REMAINING</div>
                     <div class="memo-card-input">
-                        <textarea class="large-input" name="memo" id="memo-textarea" placeholder="Remember..."  maxlength="300" required></textarea>
+                        <textarea class="large-input" name="memo" id="memo-textarea" placeholder="Your memory..."  maxlength="300" required></textarea>
                     </div>
                     <div class="memo-card-footer">
                         <div class="card-title">
-                            MEMORY OF <b><input type="text" class="small-input"  name="name" placeholder="YOUR NAME" required></b>  | MEMORY DATE ≈ <b><input type="text" class="small-input" name="year" placeholder="YEAR" required></b>| REMEMBERED IN <b><input
+                            MEMORY OF <b><input type="text" class="small-input"  name="name" placeholder="YOUR NAME" required></b>  | MEMORY DATE ≈ <b><input type="number" style="width: 100px;" class="small-input" name="year" placeholder="YEAR" required></b>| REMEMBERED IN <b><input
                                     type="text" class="small-input" name="city" placeholder="YOUR CITY" required> , 2023</b>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-12 text-center mt-4">
-                <input type="text"  name="email" class="small-input mt-4" placeholder="YOUR E-MAIL" required>
+                <input type="text"  name="email" class="small-input mt-4 email-input" placeholder="YOUR E-MAIL" required>
 
             </div>
             <div class="col-md-12 text-center mt-4">
@@ -50,6 +49,17 @@
 @section('script')
     <script>
         $(document).ready(function () {
+
+            $('body,.navbar-brand, .email-input  ').addClass('black-theme');
+            $('.navbar-item img').addClass('svg-white');
+            $(' .email-input  ').addClass('white-border');
+            $('.card-form , .black-btn  ').addClass('white-theme');
+            // Select the textarea element by its ID
+            var textarea = $(".large-input");
+
+            // Set focus to the textarea
+            textarea.focus();
+
             var maxChars = 300;
             var textarea = $('#memo-textarea');
             var charCount = $('#char-count');

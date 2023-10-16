@@ -7,6 +7,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('../icons/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('../icons/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('../icons//site.webmanifest') }}">
+    <meta property="og:image" content="{{ asset('icons/android-chrome-192x192.png') }}">
+    <meta property="og:image:secure_url" content="{{ asset('icons/android-chrome-192x192.png')}}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -18,36 +20,46 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aleo&display=swap" rel="stylesheet">  <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Aleo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('../css/custom.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('../css/custom.css?v16') }}" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 
 </head>
 <body>
     <div id="app">
         <nav class="navbar">
-            <div class="container">
+            <div class="container" >
                 <a class="navbar-brand navbar-logo font-BP" href="{{ url('/') }}">
-                  <b>MEMOMRY</b>ARCHIVES
+                  <b>MEMORY</b>ARCHIVES
                 </a>
 
                 <div>
                 @if(request()->is('/'))
                     <!-- This is the home page, do not display the link -->
+                        <a class="navbar-brand navbar-item font-BP invisible" href="{{ url('/') }}">
+                            <img src="{{ asset('../icons/noun-back.svg') }}" style="max-height: 50px" alt="Back">
+                        </a>
                     @else
-                        <a class="navbar-brand navbar-item font-BP" href="{{ url('/') }}">
+                        <a class="navbar-brand navbar-item font-BP " href="{{ url('/') }}">
                             <img src="{{ asset('../icons/noun-back.svg') }}" style="max-height: 50px" alt="Back">
                         </a>
                     @endif
                     <a class="navbar-brand navbar-item font-BP" href="{{ url('/info') }}">
-                        INFO
+                       <u>INFO</u>
                     </a>
                 </div>
 
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 container">
             @yield('content')
         </main>
     </div>

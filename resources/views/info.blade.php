@@ -1,52 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row font-BP body-container info-page">
-        <div class="col-md-6 col-sm-12 p-4">
-                <b>
-                    THIS ARCHIVE OFFERS A CURATED SPACE FOR OUR EARLY
-                    MEMORIES.
-                    <br> <br>
-                    THIS PLATFORM IS NOT JUST A REPOSITORY; IT‘S A SANCTUARY
-                    WHERE MEMORIES ARE CELEBRATED, PRESERVED, AND RELIVED. BY
-                    ARCHIVING THESE EARLY RECOLLECTIONS, WE ENSURE THAT MOMENTS AND PEOPLE FROM OUR PAST REMAIN VIVID, ALIVE, AND
-                    CHERISHED.
-                    <br> <br>
-                    IN THE VAST EXPANSE OF HUMAN COGNITION, MEMORY STANDS
-                    AS A TESTAMENT TO OUR PERSONAL HISTORIES, AS WELL AS OUR
-                    COLLECTIVE PSYCHE AND SHARED HUMAN JOURNEY.
-                    <br> <br>
-                    IF WE PERCEIVE LIFE NOT AS A SEQUENCE OF ISOLATED EVENTS
-                    BUT AS AN ONGOING RIVER, MEMORIES BECOME THE LANDMARKS
-                    ALONG ITS BANKS. THEY ARE NOT MERE MOMENTS FROZEN IN
-                    TIME, BUT THE VANTAGE POINTS FROM WHICH WE OBSERVE THE
-                    FLOWING WATERS OF OUR EXISTENCE.
-                </b>
+    <div class="row font-BP info-page">
+        <div class="col-md-6 col-sm-12 py-4">
+
+            This platform is an archival space for our early memories.
+
+
+            <br> <br>
+            And yet it is not only an Archive. It is a place where memories are preserved and relived. By archiving early recollections, this work ensures that moments, people, and experiences remain alive.
+
+            <br> <br>
+            Early memories inform our identities. Even if they are fragmented or amorphous, these memories act as scaffolds upon which our future perceptions are built. To recall and revisit them is to engage in an act of introspection and mediation.
+
+
         </div>
         <div class="col-md-6 col-sm-12 p-4">
-            <b>
-                EARLY MEMORIES, HOUSED IN THE RECESSES OF OUR MINDS, ARE
-                NOT MERE RECOLLECTIONS; THEY ARE FORMATIVE SNIPPETS THAT
-                INFORM OUR CURRENT IDENTITIES. PSYCHOLOGICALLY, THESE MEMORIES, EVEN IF FRAGMENTED OR AMORPHOUS, ACT AS SCAFFOLDS
-                UPON WHICH OUR LATER PERCEPTIONS AND UNDERSTANDINGS ARE
-                BUILT. TO RECALL AND REVISIT THEM IS TO ENGAGE IN A PROFOUND ACT OF INTROSPECTION AND SELF-DISCOVERY.
-                <br> <br>
-                SHARE THESE TREASURED SNIPPETS, THESE TIME-TRAVELING WINDOWS TO YOUR PAST SELF, AND IN DOING SO, DISCOVER UNEXPECTED SYMMETRIES WITH OTHERS. THESE SHARED FRAGMENTS SERVE
-                TO REMIND US OF THE INTERCONNECTED TAPESTRY OF LIFE, WHERE INDIVIDUAL THREADS, THOUGH DISTINCT, ARE WOVEN TOGETHER IN INTRICATE PATTERNS.
-            </b>
+
+            If we perceive life not as a sequence of isolated events but rather as a tributary;
+            memories are the landmarks along its’ banks. They are not moments frozen in time,
+            but the vantage points from which we understand our fluid existence. In the vastness of human cognition,
+            memory stands as a testament to our personal and collective histories. our collective psyche and journey.
      </div>
         <hr>
 
         <div class="col-md-6 col-sm-12 mt-4">
-            <b>
-                MEMORYMEMO IS A PROJECT BY ARTIST TILL KÖNNEKER ON THE
-                OCCASION OF THE EXHIBITION „“ IN THE BERN CULTURAL MUSEUM
-                IN NOVEMBER 2023 AND IS PART OF HIS ONGOING WORKS PRACTISE ABOUT THE PERCEPTION OF TIME AND MEMORIES.
-                <br><br>
-                VISIT <a href="TILLKOENNEKER.WORK" target="_blank">TILLKOENNEKER.WORK</a> , IN PARTICULAR THE WORK <u>„WAITING FOR MEMORIES“</u>, <u>„SEARCH FOR“</u>, <u> „LAYDOWNS“</u> AND <u>„WAS BLEIBT“</u> .
-                <br><br>
-                CONTACT: <u>TILL@AMT-FUER-ERMOEGLICHUNG.CH</u>
-            </b>
+
+            Memory Archives was created by Till Könneker for the exhibition, having the same name.
+            Kulturmuseum Bern, 23. November – 19. Dezember 2023.    <br><br>
+            <a href="tillkoenneker.com" target="_blank">tillkoenneker.com</a> /  <a href="kulturmuseum.ch" target="_blank">kulturmuseum.ch</a>
+            <br><br>
+
+            <a href="mailto: contact@memoryarchives.world">Contact</a>
 
         </div>
     </div>

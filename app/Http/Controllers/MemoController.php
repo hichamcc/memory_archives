@@ -66,7 +66,7 @@ class MemoController extends Controller
         $memo = Memory::find($id);
 
         if (!$memo) {
-            return redirect()->route('memos.index')->with('error', 'Memo not found');
+            return redirect()->route('home')->with('error', 'Memo not found');
         }
 
         // Validate the incoming request data
@@ -92,7 +92,7 @@ class MemoController extends Controller
 
         if ($request->status == 'active' ){
 
-            $emailContent = "<div style='font-size: 18px'><p>Hello $memo->name,</p>  <p>YOUR MEMORY HAS BEEN ARCHIVED.</p></div> <hr> <b>MEMORY</b>ARCHIVES <br> <a href='https://www.memoryarchives.world/'>www.memoryarchives.world</a> ";
+            $emailContent = "<div style='font-size: 18px'><p>Hello $memo->name,</p>  <p>Your memory has been successfully archived and can now be viewed online. <br> Feel free to share this Archive with your friends worldwide to keep their memories safe too.</p></div> <hr> <b>MEMORY</b>ARCHIVES <br> <a href='https://www.memoryarchives.world/'>www.memoryarchives.world</a> ";
 
             Mail::html($emailContent, function ($message ) use ($memo) {
                 $message->to($memo->email)
@@ -103,7 +103,7 @@ class MemoController extends Controller
 
         if ($request->status == 'refused' ){
 
-            $emailContent = "<div style='font-size: 18px'><p>Hello $memo->name,</p>  <p>YOUR MEMORY HAS BEEN REJECTED, TRY AGAIN</p></div> <hr> <b>MEMORY</b>ARCHIVES <br> <a href='https://www.memoryarchives.world/'>www.memoryarchives.world</a> ";
+            $emailContent = "<div style='font-size: 18px'><p>Hello $memo->name,</p>  <p>Unfortunately, your memory has been rejected. It violates our guidelines. <br> Just try again!</p></div> <hr> <b>MEMORY</b>ARCHIVES <br> <a href='https://www.memoryarchives.world/'>www.memoryarchives.world</a> ";
 
             Mail::html($emailContent, function ($message ) use ($memo) {
                 $message->to($memo->email)
@@ -114,6 +114,24 @@ class MemoController extends Controller
 
         // Redirect to the index page with a success message
         return redirect()->route('home')->with('success', 'Memo status updated successfully');
+    }
+
+
+    public function delete($id)
+    {
+        // Find the memory by its ID
+        $memory = Memory::find($id);
+
+        if (!$memory) {
+            // Handle the case where the memory is not found
+            return redirect()->route('home')->with('error', 'Memory not found');
+        }
+
+        // Delete the memory
+        $memory->delete();
+
+        // Redirect to a route (e.g., index page) after deletion
+        return redirect()->route('home')->with('success', 'Memory deleted successfully');
     }
 
 

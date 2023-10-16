@@ -2,25 +2,33 @@
 
 @section('content')
 
-<div class="row font-Aleo card-container body-container">
-    <div class="col-md-8 offset-md-2 col-sm-12 text-center mb-4">
+<div class="row font-Aleo ">
+    <div class="col-md-6 offset-md-3 col-sm-12 text-center mb-4">
         <h1 id="quote">
 
         </h1>
         <p class="bold" id="author">
 
         </p>
-        <a class="black-btn font-BP" href="{{ route('add_memo') }}">ARCHIVE YOUR MEMORY</a>
+        <a class="black-btn font-BP mt-3" href="{{ route('add_memo') }}">ARCHIVE YOUR MEMORY</a>
     </div>
     <div class="col-md-12 search-container">
         <input type="text" class="search-input" id="searchInput" placeholder="Search...">
         <img src="{{ asset('../icons/noun-search.svg') }}" class="search-icon" alt="Search Icon">
     </div>
 
+    <div class="col-md-12 col-sm-12 mb-2 " >
+        <a href="#" class="memo-icon" onclick="shuffle()">
+            <img src="{{ asset('../icons/noun-random.svg') }}" class="pr-2" style="transform: scale(1.2);" title="Shuffle Memories"  alt="Shuffle">
+        </a>
+    </div>
 
+</div>
+
+<div class="row font-Aleo" id="shuffle">
     @foreach ($memos as $index => $memo)
-        <div class="col-lg-4 col-md-6  col-sm-12 mb-2">
-            <div class="memo-card" data-id="{{ $memo->id }}" data-num="{{$memo->number }}">
+        <div class="col-lg-4 col-md-6  col-sm-12 mb-2 animate__animated animate__backInLeft" >
+            <div class="memo-card" data-id="{{ $memo->id }}" data-num="{{$memo->number }}" style="--bs-aspect-ratio: 50%;">
                 <div class="memo-card-header">
                     <div class="card-title">
                         MEMORY #{{ $memo->number }}
@@ -29,7 +37,7 @@
                 <div class="memo-card-body">
                     <div class="card-text">
                         <p>
-                            {{ Illuminate\Support\Str::limit($memo->memo, $limit = 150, $end = '...') }}
+                            {{ $memo->memo }}
                         </p>
                     </div>
 
@@ -43,8 +51,6 @@
 
         </div>
     @endforeach
-
-
 </div>
 @endsection
 @section('script')
@@ -98,8 +104,37 @@
             return quotesData[randomIndex];
         }
 
+        function dinRatio() {
+            var cardWidth = $('.memo-card').width();
+            var cardheight = $('.memo-card').width()/1.41;
+
+            $('.memo-card').css('height',cardheight);
+        }
 
         $(document).ready(function() {
+
+         dinRatio();
+         $(window).on('resize', function () {
+             dinRatio();
+         });
+
+            $('.memo-card').each(function() {
+                var pElement = $(this).find('.memo-card-body .card-text p');
+                var cardBody = $(this).find('.memo-card-body');
+                var cardFooter = $(this).find('.memo-card-footer');
+                var pElementF = $(this).find('.memo-card-footer .card-title');
+
+
+                while (pElement.height() / cardBody.height() < 0.55) {
+                    var fontSize = parseInt(pElement.css('font-size'));
+                    pElement.css('font-size', (fontSize + 1) + 'px');
+                }
+
+                while (cardFooter.height() > 32) {
+                    var fontSizeF = parseInt(pElementF.css('font-size'));
+                    pElementF.css('font-size', (fontSizeF - 1) + 'px');
+                }
+            });
 
             var randomQuote = getRandomQuote();
 
@@ -138,5 +173,39 @@
             // Redirect to the URL
             window.location.href = url;
         });
+
+        var initialOrder = null;
+        var shuffled = false;
+
+        function shuffle() {
+            var parent = $("#shuffle");
+            var divs = parent.children();
+
+            if (!shuffled) {
+                // Backup the initial order the first time shuffle is clicked
+                initialOrder = divs.slice();
+                shuffled = true;
+
+                while (divs.length) {
+                    parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
+                }
+            } else {
+                restoreOrder();
+            }
+
+
+        }
+
+        // Restore the initial order on the second click
+        function restoreOrder() {
+            if (shuffled && initialOrder) {
+                var parent = $("#shuffle");
+                parent.empty(); // Clear the shuffled order
+                parent.append(initialOrder); // Restore the initial order
+                shuffled = false;
+            }
+        }
     </script>
+
+
 @endsection

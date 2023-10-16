@@ -1,12 +1,4 @@
 
-@font-face {
-    font-family: 'BP';
-    src: url('public/fonts/Simplon_BP_Mono_Regular_1.ttf') format('ttf');
-}
-@font-face {
-    font-family: 'BP_bold';
-    src: url('public/fonts/Simplon_BP_Mono_Bold_1.ttf') format('ttf');
-}
 body{
     font-family: 'Aleo', serif !important;
     background-color: white;
@@ -46,10 +38,12 @@ a{
 }
 
 .font-BP{
-    font-family: 'BP',  monospace !important;
+    font-family: 'Noto Sans Mono', monospace;
+    font-weight: 400;
 }
 .font-BP-bold{
-    font-family: 'BP-bold' , monospace !important;
+    font-family: 'Noto Sans Mono', monospace;
+    font-weight: 600;
 }
 .bold{
     font-weight: bold;
@@ -121,7 +115,6 @@ a{
     background-color: #f5f5f5; /* Hover color */
 }
 
-
     /* CSS */
     .black-btn {
     appearance: none;
@@ -177,25 +170,28 @@ a{
     margin: 8px;
 }
 
-.memo-card:hover{
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+.memo-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
 
+.memo-icon:hover{
+    transform: translateY(-2px);
 }
 .memo-card{
     display: flex;
     flex-direction: column;
     margin: 8px;
     border: solid 1px;
-    height: 35vh;
     cursor: pointer;
 
 }
 
 .memo-card-header {
-    font-family: 'BP', monospace;
+    font-family: 'Noto Sans Mono', monospace;
 }
 .memo-card-footer {
-    font-family: 'BP', monospace;
+    font-family: 'Noto Sans Mono', monospace;
     background-color: black;
     color: white;
     padding: unset;
@@ -207,12 +203,11 @@ a{
     display: flex;
 }
 .card-text {
-    text-align: justify;
+    /*text-align: justify;*/
     overflow-y: auto;
-    max-height: 23vh;
 }
 .card-text p {
-    font-size: 18px;
+    font-size: 12px;
     font-weight: bold;
     padding: 12px;
     /*letter-spacing: 1px;*/
@@ -223,23 +218,41 @@ a{
 }
 
 .card-title {
-    font-size: 11px;
-    padding: 12px;
+    font-size: 10px;
+    padding: 8px 12px;
 }
 .memo-icon {
     float: right;
 }
+
+/* Define CSS animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
 .memo-icon img {
     max-height: 18px ;width: auto
 }
 .card-overview  ,.card-form  {
     min-height: 70vh;
-    height: auto;
+    height: 850px;
+    margin: auto;
+    max-width: 1200px;
     cursor: unset;
 }
 .card-overview .card-text {
-    padding: 0px 32px;
-    max-height: 50vh;
+    padding: 18px;
+    max-height: 700px;
 }
 .card-overview .card-text p {
     font-size: 48px;
@@ -250,7 +263,7 @@ a{
     margin-right: 8px;
 }
 .card-overview .memo-card-footer ,.card-form  .memo-card-footer {
-    font-family: 'BP', monospace;
+    font-family: 'Noto Sans Mono', monospace;
     background-color: white;
     color: black;
     padding: unset;
@@ -266,8 +279,9 @@ a{
 
 }
 .card-form .memo-card-input .large-input{
-    width: 90%;
-    font-size: 32px;
+    margin-top: 20px;
+    width: 95%;
+    font-size: 42px;
     border: unset;
 }
 
@@ -281,7 +295,7 @@ a{
     border: unset;
     font-weight: bold;
     border-bottom: 1px solid #000;
-      font-family: 'BP', monospace;
+    font-family: 'Noto Sans Mono', monospace;
 
 }
 
@@ -290,11 +304,11 @@ a{
     outline: unset;
 }
 #char-count {
+    float: right;
     margin-left: 14px;
     font-size: 12px;
     font-weight: bold;
-    font-family: 'BP', monospace;
-
+    font-family: 'Noto Sans Mono', monospace;
 }
 
 .card-pdf {
@@ -305,7 +319,31 @@ a{
 }
 #memo-content{
     padding: unset;
+    max-width: 100% !important;
 }
+#memo-content .card-overview, .card-form {
+    max-width: 100% !important;
+}
+
+#memo-content .card-text p {
+    -webkit-hyphens: unset;
+    -moz-hyphens: unset;
+    -ms-hyphens: unset;
+    hyphens: unset;
+    line-height: 1.6;
+}
+
+.top , .bottom {
+    font-size: 22px;
+    font-family: 'Noto Sans Mono', monospace;
+    letter-spacing: 1px;
+    padding: 12px;
+    color: black;
+}
+
+
+
+
      /* Container for search input and icon */
 .search-container {
     position: relative; /* Position the icon relative to this container */
@@ -341,7 +379,15 @@ a{
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1199px) {
+    .card-overview .card-text p {
+        font-size: 48px !important;
+    }
+
+    .card-text p {
+        font-size: 15px;
+
+    }
 }
 
 @media (max-width: 767px) {
@@ -357,8 +403,8 @@ a{
         padding: 12px;
     }
     .card-overview .card-text {
-        padding: 0px 10px;
-        max-height: 50vh;
+        padding: 18px;
+        max-height: 55vh;
     }
 
     .navbar-brand {
@@ -366,6 +412,32 @@ a{
     }
     .info-page {
         font-size: 14px;
+    }
+
+    .card-overview, .card-form {
+        min-height: 500px;
+         height: 530px;
+        margin: auto;
+        max-width: 1200px;
+        cursor: unset;
+    }
+    .card-overview .card-text p {
+        font-size: 22px !important;
+    }
+
+
+    #memo-content .memo-card-body {
+        max-height: 200px;
+    }
+    #memo-content .card-text p {
+        font-size: 14px !important;
+    }
+
+    #memo-content .card-title {
+        font-size: 10px;
+    }
+    .top , .bottom {
+        font-size: 8px;
     }
 }
 
@@ -380,4 +452,26 @@ a{
 
 .info-page {
     font-size: 18px;
+}
+
+.black-theme {
+    background-color: black !important;
+    color: white !important;
+}
+
+.white-theme {
+    background-color: white !important;
+    color: black !important;
+}
+
+.white-border {
+    border-bottom: 1px solid white !important;
+}
+
+.white-border-card {
+    border: solid 1px white;
+}
+
+.svg-white {
+    filter: invert(1);
 }
