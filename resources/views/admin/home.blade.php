@@ -146,7 +146,6 @@
             dinRatio();
             $(window).on('resize', function () {
                 dinRatio();
-
             });
 
             // Event handler for the "activeTab" click
@@ -201,12 +200,7 @@
                 $(" #activeTab , #refusedTab  ").removeClass("active");
 
 
-                var cardWidth = $('#memosPending').first('.memo-card').width();
-                var cardheight = $('#memosPending').first('.memo-card').width()/1.41;
-
-                if(cardWidth){
-                    $('.memo-card').css('height',cardheight);
-                }            });
+            });
 
 
             // Event handler for the "APPROVE" button click

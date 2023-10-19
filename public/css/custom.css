@@ -334,11 +334,13 @@ a{
 }
 
 .top , .bottom {
-    font-size: 22px;
+    font-size: 18px;
     font-family: 'Noto Sans Mono', monospace;
-    letter-spacing: 1px;
-    padding: 12px;
     color: black;
+}
+
+.top div , .bottom div {
+    padding: 18px;
 }
 
 
@@ -349,6 +351,7 @@ a{
     position: relative; /* Position the icon relative to this container */
     margin-bottom: 12px;
     margin-left: 8px;
+    padding-right: 30px;
 }
 
 /* Search input styles */

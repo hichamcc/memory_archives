@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@section('head')
+    <meta property="og:title" content="My archived memory on memoryarchives.world">
+    <meta name="twitter:title" content="My archived memory on memoryarchives.world">
+@endsection
 @section('content')
 
     <!-- Loading overlay -->
@@ -72,22 +75,27 @@
                     <div class="card-title">
                         MEMORY OF <b>{{ strtoupper($memo->name) }}</b>  | MEMORY DATE ≈ <b>{{ $memo->year }}</b>| REMEMBERED IN <b>{{ strtoupper($memo->city) }}</b>, <b>2023</b>
                         <div style="float: right">
-                            <b>memoryarchives.world</b>
+                            <b>MEMORYARCHIVES.WORLD</b>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="top d-none" id="top">
-            THIS MEMORY IS PART OF THE WORLD MEMORY ARCHIVE, A PUBLIC ARCHIVE OF LIVED MOMENTS,
-            REMEMBERED AND SHARED FOR THE PAST TO BE A PART OF THE FUTURE.
+        <div class="top " id="top">
+            <div>
+                THIS MEMORY IS PART OF THE WORLD MEMORY ARCHIVE, A PUBLIC ARCHIVE OF LIVED MOMENTS,
+                REMEMBERED AND SHARED FOR THE PAST TO BE A PART OF THE FUTURE.
+            </div>
+
         </div>
         <div class="bottom d-none" id="bottom">
-            MEMORY ARCHIVES WAS CREATED BY TILL KÖNNEKER FOR THE EXHIBITION, HAVING THE SAME NAME.
-            <br>
-            KULTURMUSEUM BERN, 23. NOVEMBER – 19. DEZEMBER 2023.
-            <br>
-            TILLKOENNEKER.COM / KULTURMUSEUM.CH
+            <div>
+                MEMORY ARCHIVES WAS CREATED BY TILL KÖNNEKER FOR THE EXHIBITION, HAVING THE SAME NAME.
+                <br>
+                KULTURMUSEUM BERN, 23. NOVEMBER – 19. DEZEMBER 2023.
+                <br>
+                TILLKOENNEKER.COM / KULTURMUSEUM.CH
+            </div>
         </div>
 
 

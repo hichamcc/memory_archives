@@ -9,7 +9,9 @@
     <link rel="manifest" href="{{ asset('../icons//site.webmanifest') }}">
     <meta property="og:image" content="{{ asset('icons/android-chrome-192x192.png') }}">
     <meta property="og:image:secure_url" content="{{ asset('icons/android-chrome-192x192.png')}}">
-    <!-- CSRF Token -->
+    @yield('head')
+
+<!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'MemoryMemo') }}</title>
@@ -26,10 +28,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     <link href="{{ asset('../css/custom.css?v16') }}" rel="stylesheet">
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+
 
 </head>
 <body>

@@ -15,19 +15,18 @@
     <div class="col-md-12 search-container">
         <input type="text" class="search-input" id="searchInput" placeholder="Search...">
         <img src="{{ asset('../icons/noun-search.svg') }}" class="search-icon" alt="Search Icon">
-    </div>
-
-    <div class="col-md-12 col-sm-12 mb-2 " >
         <a href="#" class="memo-icon" onclick="shuffle()">
             <img src="{{ asset('../icons/noun-random.svg') }}" class="pr-2" style="transform: scale(1.2);" title="Shuffle Memories"  alt="Shuffle">
         </a>
     </div>
 
+
+
 </div>
 
 <div class="row font-Aleo" id="shuffle">
     @foreach ($memos as $index => $memo)
-        <div class="col-lg-4 col-md-6  col-sm-12 mb-2 animate__animated animate__backInLeft" >
+        <div class="col-lg-4 col-md-6  col-sm-12 mb-2 " >
             <div class="memo-card" data-id="{{ $memo->id }}" data-num="{{$memo->number }}" style="--bs-aspect-ratio: 50%;">
                 <div class="memo-card-header">
                     <div class="card-title">
